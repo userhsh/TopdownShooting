@@ -24,6 +24,7 @@ public class UpgradeSceneManager : MonoBehaviour
     {
         gameButton.GameButton[0].onClick.AddListener(BackStartScene);
         gameButton.GameButton[1].onClick.AddListener(StartGame);
+        gameButton.GameButton[2].onClick.AddListener(ResetUpgrade);
     }
 
     private void BackStartScene()
@@ -36,5 +37,13 @@ public class UpgradeSceneManager : MonoBehaviour
     {
         // 메인 씬으로 이동
         SceneManager.LoadScene(1);
+    }
+
+    private void ResetUpgrade()
+    {
+        // 강화 레벨 초기화
+        print("Reset Upgrade");
+        // 소모 골드 환급
+        print("Gold Return");
     }
 }
