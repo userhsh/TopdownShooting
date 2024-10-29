@@ -15,42 +15,16 @@ public class MainPanel : MonoBehaviour
         startSceneButtons = GetComponentInChildren<StartSceneButtons>();
         startSceneButtons.ButtonsInit();
         ButtonEventInit();
-        ContinueButtonInit();
     }
 
     private void ButtonEventInit()
     {
-        startSceneButtons.Buttons[0]?.onClick.AddListener(ContinueGame);
-        startSceneButtons.Buttons[1]?.onClick.AddListener(NewGame);
+        startSceneButtons.Buttons[0]?.onClick.AddListener(StartGame);
+        startSceneButtons.Buttons[1]?.onClick.AddListener(UpgradeScene);
         startSceneButtons.Buttons[3]?.onClick.AddListener(QuitGame);
     }
 
-    // 저장된 데이터가 있는지 확인
-    private void CheckSaved()
-    {
-        // 세이브 데이터 확인 로직
-
-    }
-
-    private void ContinueButtonInit() 
-    {
-        // 세이브 데이터 확인
-        CheckSaved();
-
-        // 세이브가 있다면
-        if (isSaved)
-        {
-            // Continue button 활성화
-            startSceneButtons.Buttons[0].interactable = true;
-        }
-        else // 세이브가 없다면
-        {
-            // Continue button 비활성화
-            startSceneButtons.Buttons[0].interactable = false;
-        }
-    }
-
-    private void ContinueGame()
+    private void StartGame()
     {
         //저장된 데이터 불러오는 로직
         print("LoadGame");
@@ -58,24 +32,10 @@ public class MainPanel : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void NewGame()
+    private void UpgradeScene()
     {
-        // 세이브 데이터 확인
-        CheckSaved();
-
-        // 세이브가 있다면
-        if (isSaved) 
-        {
-            // 저장된 데이터 삭제
-            print("DeleteGame");
-            // 게임씬으로 이동
-            SceneManager.LoadScene(1);
-        }
-        else // 세이브가 없다면
-        {
-            // 게임씬으로 이동
-            SceneManager.LoadScene(1);
-        }
+        // 업그레이드 씬으로 이동
+        SceneManager.LoadScene(2);
     }
 
     private void QuitGame()
