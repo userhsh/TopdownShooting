@@ -21,6 +21,7 @@ public class OptionPanel : MonoBehaviour
         // 버튼 이벤트 매핑
         buttons[0]?.onClick.AddListener(ChangeViewMode);
         buttons[1]?.onClick.AddListener(ChangeViewMode);
+        buttons[3]?.onClick.AddListener(DeleteData);
     }
 
     private void ChangeViewMode()
@@ -50,5 +51,13 @@ public class OptionPanel : MonoBehaviour
         {
             nowViewMode.GetComponent<Text>().text = "창모드";
         }
+    }
+
+    private void DeleteData()
+    {
+        // 데이터 확인
+
+        // 데이터 삭제
+        print("Delete Data");
     }
 }
