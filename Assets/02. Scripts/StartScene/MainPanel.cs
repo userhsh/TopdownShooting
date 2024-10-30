@@ -7,6 +7,9 @@ public class MainPanel : MonoBehaviour
 {
     private bool isSaved = false;
     public bool Issaved { get { return isSaved; } set { isSaved = value; } }
+
+    private bool isTutorial = false;
+
     [HideInInspector]
     public StartSceneButtons startSceneButtons = null;
 
@@ -24,12 +27,45 @@ public class MainPanel : MonoBehaviour
         startSceneButtons.Buttons[3]?.onClick.AddListener(QuitGame);
     }
 
+    private void CheckSave()
+    {
+        // 저장된 데이터가 있는지 확인
+    }
+
+    private void CheckTutorial()
+    {
+        // 튜토리얼을 할 것인지 확인
+    }
+
     private void StartGame()
     {
-        //저장된 데이터 불러오는 로직
-        print("LoadGame");
-        // 게임씬으로 이동
-        SceneManager.LoadScene(1);
+        CheckSave();
+
+        // 세이브 데이터가 있다면
+        if (isSaved)
+        {
+            // 게임씬으로 이동
+            SceneManager.LoadScene(3);
+        }
+        // 세이브 데이터가 없다면
+        else
+        {
+            // 튜토리얼을 할껀지 확인
+            CheckTutorial();
+
+            // 한다면
+            if (isTutorial) 
+            {
+                // 튜토리얼 씬으로 이동
+                SceneManager.LoadScene(1);
+            }
+            // 안한다면
+            else
+            {
+                // 게임씬으로 이동
+                SceneManager.LoadScene(3);
+            }
+        }
     }
 
     private void UpgradeScene()
