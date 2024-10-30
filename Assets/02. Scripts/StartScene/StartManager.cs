@@ -16,6 +16,8 @@ public class StartManager : MonoBehaviour
 
     private void StartManagerInit()
     {
+        Screen.SetResolution(1920, 1080, true);
+
         mainPanel = GetComponentInChildren<MainPanel>();
         optionPanel = GetComponentInChildren<OptionPanel>();
 
